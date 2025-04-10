@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Today's Schedule{% endblock title %}
+
+{% block content %}
+    <section class="today-schedule-section">
+        <div class="schedule-head">
+            <h1>Today's Schedule</h1>
+        </div>
+
+                <!-- Routine Table -->
+                <div class="today-schedule-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Faculty Name</th>  <!-- First Column for Faculty -->
+                                <th>9:00 - 9:50</th>
+                                <th>9:50 - 10:40</th>
+                                <th>10:40 - 11:30</th>
+                                <th>11:30 - 12:20</th>
+                                <th>Break</th>  <!-- Break Column -->
+                                <th>12:40 - 1:30</th>
+                                <th>1:30 - 2:20</th>
+                                <th>2:20 - 3:10</th>
+                                <th>3:10 - 4:00</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dr. Smith</td>
+                                <td>Math <br> A1 <br> Room 101</td>
+                                <td>Physics <br> B2 <br> Room 202</td>
+                                <td>CS <br> C1 <br> Lab 1</td>
+                                <td>Chemistry <br> A2 <br> Room 303</td>
+                                <td rowspan="5" style="background: #b7b7b3; font-weight: bold;">Break</td>  <!-- Break Rowspan -->
+                                <td>English <br> B1 <br> Room 102</td>
+                                <td>—</td>
+                                <td>Math <br> C2 <br> Room 401</td>
+                                <td>Physics <br> A3 <br> Room 203</td>
+                            </tr>
+                            <tr>
+                                <td>Prof. John</td>
+                                <td>—</td>
+                                <td>CS <br> B1 <br> Lab 2</td>
+                                <td>Physics <br> A2 <br> Room 201</td>
+                                <td>Math <br> C1 <br> Room 301</td>
+                                <td>—</td>
+                                <td>Chemistry <br> A3 <br> Room 302</td>
+                                <td>CS <br> B2 <br> Lab 3</td>
+                                <td>—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    </section>
+
+{% endblock content %}
+
+
+
+

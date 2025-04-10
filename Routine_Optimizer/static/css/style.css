@@ -1,0 +1,447 @@
+:root {
+  --primary-bg-color: #cee0f2;
+  --lightheme-color: #5f51dad4;
+  --lighthover-color: #1f1486d4;
+  --darktheme-color: #f1f816d4;
+  --darkhover-color: #babf1bd4;
+  --white-color: white;
+  --black-color: black;
+  --font-family: Arial, sans-serif;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+span {
+  color: var(--lightheme-color);
+}
+
+/* Header Styling */
+header {
+  
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+/* Navbar Styling */
+.navbar nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+/* Logo with Hover Effect */
+.navbar nav .logo {
+  color: var(--black-color);
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  margin-right: 19px;
+}
+
+/* Hover Effect on Logo */
+.navbar nav .logo:hover {
+  transform: translateY(-3px) scale(1.1);
+  color: var(--lightheme-color);
+}
+
+/* Span Specific Hover Effect for 'Master' */
+.navbar nav .logo:hover span {
+  color: var(--black-color);
+}
+
+/* Navigation Links */
+.navbar-ul {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+  margin: 0 auto; /* Center the links */
+}
+
+.navbar-ul li a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--black-color);
+  transition: all 0.2s ease;
+}
+
+/* Hover Effect for Navigation Links */
+.navbar-ul li a:hover {
+  text-decoration: underline;
+  color: var(--lighthover-color);
+  transform: translateY(-3px);
+}
+
+/* User and Mode Icons */
+.user-icon i, .mode-icon i {
+  font-size: 38px;
+  cursor: pointer;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Button Styling */
+nav .nav-btn {
+  background-color: var(--white-color);
+  color: var(--black-color);
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 8px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  margin-left: 20px; /* Space between buttons */
+}
+
+/* Hover Effect for Button */
+nav .nav-btn:hover {
+  background-color: var(--lighthover-color);
+  border: 2px solid black;
+  color: white;
+  box-shadow: 0px 8px 15px var(--lightheme-color);
+  transform: translateY(-3px);
+}
+
+.moving-text {
+  background-color: var(--darktheme-color);
+  width: 100%;
+  height: 25px;
+  overflow: hidden;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll 30s linear infinite;
+}
+
+.scrolling-wrapper p {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 18px;
+  color: var(--black-color);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
+/*Home section code*/
+
+.home-section{
+  background-image: url('Images/bg1.jpg');
+  opacity: 0.9;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white-color);
+}
+
+.home .welcome-head{
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.home .typing-text{
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 20px;
+}
+
+.starts{
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.cta-btn{
+  background-color: var(--lightheme-color);
+  color: var(--black-color);
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.cta-btn:hover{
+  color: var(--white-color);
+  background-color: var(--lighthover-color);
+  box-shadow: 0px 8px 15px var(--lightheme-color);
+}
+
+/* About section code */
+.about-section{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.container img{
+  height: 600px;
+  width: 550px;
+  padding: 50px;
+  border-radius: 80px;
+}
+
+.detail-box {
+  flex: 1;
+  text-align: left;
+  max-width: 600px;
+  padding-left: 20px;
+}
+
+.detail-box h2 {
+  font-size: 35px;
+  font-weight: bold;
+  color: var(--black-color);
+  margin-bottom: 15px;
+}
+
+.about-para {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.detail-box a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--lightheme-color);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.detail-box a:hover {
+  background-color: var(--lighthover-color);
+  transform: translateY(-3px);
+}
+
+/*End of About section*/
+
+
+/*Schedule section code*/
+
+.schedule-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.schedule-head h1{
+  text-align: center;
+  font-weight: 600;
+  margin-top: 40px;
+}
+
+
+.day-btns {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.days-list {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+.days-list li {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: var(--lightheme-color);
+  color: var(--black-color);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.days-list li.active,
+.days-list li:hover {
+  background-color: var(--lighthover-color); /* Same yellow shade from the 'Order Online' button */
+  color: var(--white-color);
+}
+
+.schedule-table {
+  width: 90%;
+  margin: 20px auto;
+  overflow-x: auto;
+  background: white;
+  border-radius: 15px; /* Rounded corners */
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+table {
+  width: 150%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+}
+
+td {
+  font-size: 14px;
+}
+
+tr:hover {
+  background-color: #f8f8f8;
+  transition: 0.3s;
+}
+
+/*End of schedule section */
+
+
+/* Today’s Schedule Section code */
+.today-schedule-table {
+  width: 90%;
+  margin: 20px auto;
+  overflow-x: auto;
+  background: white;
+  border-radius: 15px; /* Rounded corners */
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.today-schedule-table table {
+  width: 150%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.today-schedule-table th,
+.today-schedule-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.today-schedule-table th {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+}
+
+.today-schedule-table td {
+  font-size: 14px;
+}
+
+.today-schedule-table tr:hover {
+  background-color: #f8f8f8;
+  transition: 0.3s;
+}
+
+
+/*Footer section code*/
+.table{
+  margin-top: 50px;
+  background-color: var(--snd-bg-color);
+  width:100%;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20rem;
+  padding-bottom: 60px;
+  padding-left: 30px;
+  padding-right: 20px;
+
+
+}
+.table th{
+  text-align: center;
+  font-size: 20px;
+  gap:100px;
+}
+.table td{
+  font-size: 1.5rem;
+  line-height: 2.6rem;
+  gap:1.2rem;
+  padding-top: 20px;
+}
+
+
+
+.socials{
+  text-align: center;
+  padding-bottom: 20px;
+  color: var(--text-color);
+}
+.socials a{
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 10px;
+  font-size: 25px;
+  color:var(--main-color);
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  transition: 0.5s ease-in-out;
+
+}
+.socials a:hover{
+  transform: scale(1.1);
+}
+.copyright{
+  display: flexbox;
+  justify-content: center;
+  font-size: 12px;
+}

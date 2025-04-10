@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Signup/Login</title>
+    <link rel="stylesheet" type="text/css" href="slide navbar style.css">
+    <link href="{% static 'signup.css' %}" rel="stylesheet">
+    
+    <!-- Boxicons CDN -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        /* Eye icon placement */
+        .eye-icon {
+            position: absolute;
+            right: 40px;
+            margin-top: -35px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <input type="checkbox" id="chk" aria-hidden="true">
+
+        <!-- Signup Form -->
+        <div class="signup">
+            <form method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="chk" aria-hidden="true">Sign up</label>
+
+                <input type="text" name="username" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="number" name="phone_number" placeholder="Phone Number" required>
+                <input type="text" name="college_id" placeholder="College ID" required>
+                <input type="text" name="subject" placeholder="Your Subject" required>
+
+                <div class="position-relative">
+                    <input type="password" id="signup-password" class="password" name="password1" placeholder="Password" required>
+                    <i class='bx bx-hide eye-icon' onclick="togglePassword('signup-password', this)"></i>
+                </div>
+
+                <div class="position-relative">
+                    <input type="password" id="signup-confirm-password" class="password" name="password2" placeholder="Confirm Password" required>
+                    <i class='bx bx-hide eye-icon' onclick="togglePassword('signup-confirm-password', this)"></i>
+                </div>
+
+                <div class="picture">
+                    <label class="upload-pic" for="profile-pic">Upload Profile Picture</label>
+                    <input type="file" id="profile-pic" name="photo" accept="image/*" required>
+                </div>
+
+                <button>Sign up</button>
+            </form>
+        </div>
+
+        <!-- Login Form -->
+        <div class="login">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <label for="chk" aria-hidden="true">Login</label>
+
+                <input type="text" name="college_id" placeholder="College ID" required>
+
+                <div class="position-relative">
+                    <input type="password" id="login-password" class="password" name="password" placeholder="Password" required>
+                    <i class='bx bx-hide eye-icon' onclick="togglePassword('login-password', this)"></i>
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JS for eye toggle -->
+    <script>
+        function togglePassword(fieldId, icon) {
+            const field = document.getElementById(fieldId);
+            if (field.type === "password") {
+                field.type = "text";
+                icon.classList.replace("bx-hide", "bx-show");
+            } else {
+                field.type = "password";
+                icon.classList.replace("bx-show", "bx-hide");
+            }
+        }
+    </script>
+</body>
+</html>

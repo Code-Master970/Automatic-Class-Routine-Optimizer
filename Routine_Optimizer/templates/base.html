@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}ROUTINE OPTIMIZER{% endblock title %}</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    {% block extra_css %}{% endblock extra_css %}
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="{% block body_class %}{% endblock body_class %}">
+
+    {% if not block.body_class or block.body_class != "dashboard-page" %}
+    <!-- Header Section (only for non-dashboard pages) -->
+    <header>
+        <div class="navbar">
+            <nav>
+                <a class="logo" href="/">Code <span>Master</span></a>
+                <ul class="navbar-ul">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/schedule">Schedule</a></li>
+                    <li><a href="/today_schedule">Today's Update</a></li>
+                </ul>
+
+                
+
+                <div class="user-icon">
+                    <a href="/dashboard/">
+                        {% if request.user.faculty.photo %}
+                          <img src="{{ request.user.faculty.photo.url }}" alt="Profile Photo"
+                               style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin-left: 50px; margin-right: 50px;">
+                        {% else %}
+                        <i class='bx bxs-user-circle' style="margin-left: 50px; margin-right: 50px;"></i>
+                        {% endif %}
+                      </a>
+                </div>
+                <i class='bx bxs-sun' style="font-size: 36px;"></i>
+
+                {% if user.is_authenticated %}
+                    <a class="nav-btn-logout" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a class="nav-btn" href="{% url 'signup' %}">Sign up / Login</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+    {% endif %}
+
+    <!-- Page Content -->
+    {% block content %}{% endblock content %}
+
+    {% if not block.body_class or block.body_class != "dashboard-page" %}
+    <!-- Footer Section (only for non-dashboard pages) -->
+    <div class="footer">
+        <table class="table">
+            <tr>
+                <th>Quick Links:</th>
+                <th>Languages:</th>
+                <th>Follow Us:</th>
+                <th>Contact Us:</th>
+            </tr>
+            <tr>
+                <td><a href="#home">Home</a></td>
+                <td>Python</td>
+                <td><a href="https://www.facebook.com/CodeMasterofIndia/">Facebook</a></td>
+                <td>5884 321 754</td>
+            </tr>
+            <tr>
+                <td><a href="#service">What We Offer</a></td>
+                <td>Java</td>
+                <td><a href="https://www.instagram.com/codingmaster0/">Instagram</a></td>
+                <td>Phone: 9123315290</td>
+            </tr>
+            <tr>
+                <td><a href="#about">About Us</a></td>
+                <td>C, C++</td>
+                <td><a href="https://x.com/codemasters?lang=en">Twitter</a></td>
+                <td>Email: codemaster1888@gmail.com</td>
+            </tr>
+            <tr>
+                <td><a href="#reviews">Reviews</a></td>
+                <td>HTML</td>
+                <td><a href="https://www.youtube.com/@CodeMaster101">YouTube</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="socials">
+        <a href="https://www.facebook.com/CodeMasterofIndia/"><i class='bx bxl-facebook'></i></a>
+        <a href="https://www.instagram.com/codingmaster0/"><i class='bx bxl-instagram'></i></a>
+        <a href="https://x.com/codemasters?lang=en"><i class='bx bxl-twitter'></i></a>
+        <a href="https://www.youtube.com/@CodeMaster101"><i class='bx bxl-youtube'></i></a>
+
+        <p class="copyright">
+            Code Master is optimized for learning and training. Examples might be simplified to improve reading and learning.<br>
+            Tutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness of all content.<br>
+            While using Code Master, you agree to have read and accepted our terms of use, cookie and privacy policy.<br><br>
+        </p>
+        &copy; Copyright 1999–2024 — All Rights Reserved. Powered by <u>@CODE MASTER PVT.LTD</u>
+    </div>
+    {% endif %}
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Personal Details{% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'details.css' %}">
+{% endblock extra_css %}
+
+{% block body_class %}dashboard-page{% endblock body_class %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="sidebar expanded">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <i class='bx bx-cog'></i>
+        </div>
+        <h2>Board</h2>
+        <ul>
+            <li><a href="/dashboard/" style="color: white; text-decoration: none;"><i class='bx bx-grid-alt'></i>Dashboard</a></li>
+            <li class="active"><a href="/dashboard/personal_details/" style="color: white; text-decoration: none;"><i class='bx bx-user'></i>Personal Details</a></li>
+            <li><a href="/dashboard/password/" style="color: white; text-decoration: none;"><i class='bx bx-lock'></i>Reset Password</a></li>
+            <li><i class='bx bx-list-ul'></i> Student List</li>
+            <li><i class='bx bx-file'></i> Application List</li>
+            <li><i class='bx bx-upload'></i> Result Upload</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="card">
+            <h2>Personal Details</h2>
+            <button id="edit-btn" class="edit-btn" onclick="enableEditing()">
+                <i class='bx bx-pencil'></i> Edit
+            </button>
+            <form id="details-form" method="POST" enctype="multipart/form-data" action={% url 'personal_details_update' %}>
+                {% csrf_token %}
+                <label>Name:</label>
+                <input type="text" name="username" placeholder="Enter your name" value="{{ user.username }}" readonly>
+
+                <label>Email:</label>
+                <input type="email" name="email" placeholder="Enter your email" value="{{ user.email }}" readonly>
+
+                <label>Phone Number:</label>
+                <input type="tel" name="phone_number" placeholder="Enter your phone number" value="{{ user.faculty.phone_number }}" readonly>
+
+                <label>Subject:</label>
+                <input type="text" name="subject" placeholder="Enter subject" value="{{ user.faculty.subject }}" readonly>
+
+                <label>College ID:</label>
+                <input type="text" name="college_id" placeholder="Enter college ID" value="{{ user.faculty.college_id }}" readonly>
+
+                {% if user.faculty.photo %}
+                    <label>Current Photo:</label><br>
+                    <img src="{{ user.faculty.photo.url }}" alt="Profile Photo" width="120" style="margin-bottom: 10px;"><br>
+                {% endif %}
+
+                <label>Upload New Photo:</label>
+                <input type="file" name="photo" readonly>
+
+                <div class="button-container">
+                    <button type="submit" id="update-btn" class="update-btn" readonly>Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% comment %} <script>
+    function toggleSidebar() {
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.classList.toggle("expanded");
+    }
+
+    function enableEditing() {
+        const form = document.getElementById("details-form");
+        const inputs = form.querySelectorAll("input");
+        const updateBtn = document.getElementById("update-btn");
+
+        inputs.forEach(input => input.removeAttribute("readonly"));
+        updateBtn.removeAttribute("readonly");
+    }
+</script> {% endcomment %}
+
+<script>
+function enableEditing() {
+    const form = document.getElementById("details-form");
+    const inputs = form.querySelectorAll("input:not([type='file'])"); 
+    const updateBtn = document.getElementById("update-btn");
+
+    inputs.forEach(input => {
+        input.removeAttribute("readonly");
+        input.required = true;  // Make sure values are filled before submitting
+    });
+
+    updateBtn.disabled = false;  // Enable Update button
+}
+</script>
+
+{% endblock content %}

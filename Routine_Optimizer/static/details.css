@@ -1,0 +1,161 @@
+.dashboard-page body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e8f5e9;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #e8f5e9;
+}
+
+/* Sidebar Styling */
+.dashboard-page .sidebar {
+    width: 60px;
+    background: #388e3c;
+    padding: 20px 10px;
+    color: white;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-page .sidebar.expanded {
+    width: 200px;
+}
+
+.dashboard-page .sidebar h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.dashboard-page .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: none;
+}
+
+.dashboard-page .sidebar.expanded ul {
+    display: block;
+}
+
+.dashboard-page .sidebar ul li {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.2s;
+}
+
+.dashboard-page .sidebar ul li:hover, .sidebar ul li.active {
+    background: #2e7d32;
+}
+
+.dashboard-page .sidebar ul li i {
+    margin-right: 10px;
+}
+
+.dashboard-page .toggle-btn {
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Main Content */
+.dashboard-page .main-content {
+    flex: 1;
+    padding: 40px;
+    background: #c8e6c9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card Content */
+.dashboard-page .card {
+    position: relative;
+    background: #a5d6a7;
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 12px;
+    color: #1b5e20;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-page .card h2 {
+    text-align: center;
+    color: #1b5e20;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.dashboard-page .card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-page .card label {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.dashboard-page .card input {
+    padding: 10px;
+    border: 2px solid #1b5e20;
+    border-radius: 8px;
+    background: #c8e6c9;
+    color: #1b5e20;
+    font-size: 18px;
+}
+
+.dashboard-page .button-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard-page .update-btn {
+    background-color: #1b5e20;
+    color: white;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.dashboard-page .update-btn:disabled {
+    background-color: #4caf50;
+    cursor: not-allowed;
+}
+
+.dashboard-page .edit-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dashboard-page .edit-btn i {
+    font-size: 18px;
+}
+
+.dashboard-page .edit-btn:hover {
+    background: #1b5e20;
+}

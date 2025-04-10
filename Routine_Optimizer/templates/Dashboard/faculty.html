@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Faculty Dashboard{% endblock title %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'faculty.css' %}">
+{% endblock extra_css %}
+
+{% block body_class %}dashboard-page{% endblock body_class %}
+
+{% block content %}
+<!-- Wrap both sidebar and content inside dashboard-page -->
+<div class="dashboard-container">
+    <div class="sidebar expanded">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <i class='bx bx-cog'></i>
+        </div>
+        <h2>Board</h2>
+        <ul>
+            <li class="active" onclick="showSection('dashboard') "><i class='bx bx-grid-alt'></i> Dashboard</li>
+            <a href="/dashboard/personal_details/" style="text-decoration: none;"><li><i class='bx bx-user'></i> Personal Details</li></a>
+            <a href="/dashboard/password/" style="text-decoration: none;"><li><i class='bx bx-lock'></i> Reset Password</li></a>
+            <li><i class='bx bx-list-ul'></i> Student List</li>
+            <li><i class='bx bx-file'></i> Application List</li>
+            <li><i class='bx bx-upload'></i> Result Upload</li>
+        </ul>
+    </div>
+
+    <div class="main-content" id="dashboard">
+        <div class="profile-section">
+            <img src="{{ request.user.faculty.photo.url }}" alt="Profile Picture">
+            <span>{{user.username}}</span>
+        </div>
+        <h1>Faculty Dashboard</h1>
+        <div class="faculty-name">Welcome {{user.username}}</div>
+        <div class="caption">"Knowledge is power, but enthusiasm pulls the switch."</div>
+        <div class="card">
+            <h2>Today's Schedule</h2>
+            <ul id="scheduleList"></ul>
+        </div>
+        <div class="card">
+            <h2>Weekly Usage & Updates</h2>
+            <p>Admin can moderate any updates or changes here.</p>
+            <canvas id="usageChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.classList.toggle("expanded");
+    }
+
+    function showSection(section) {
+        document.getElementById("dashboard").classList.remove("active");
+        document.getElementById("personal-details")?.classList.remove("active");
+        document.getElementById(section)?.classList.add("active");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const schedule = [
+            { time: "10:00 AM", subject: "Mathematics" },
+            { time: "12:00 PM", subject: "Physics" },
+            { time: "02:00 PM", subject: "Computer Science" }
+        ];
+        const scheduleList = document.getElementById("scheduleList");
+        schedule.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = `${item.time} - ${item.subject}`;
+            scheduleList.appendChild(li);
+        });
+    });
+</script>
+{% endblock content %}
